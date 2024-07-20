@@ -1,0 +1,15 @@
+void moveZeroes(vector<int>& nums) {
+        int insert_position=0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]!=0){
+                nums[insert_position]=nums[i];
+                insert_position++;
+                
+            }
+        }
+            while(insert_position<nums.size()){
+                nums[insert_position++]=0;
+                
+            }
+        
+    }
