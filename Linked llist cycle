@@ -1,0 +1,16 @@
+ListNode *slowPointer = head; // Initialize slow pointer
+        ListNode *fastPointer = head; // Initialize fast pointer
+      
+        // Loop until the fast pointer reaches the end of the list
+        while (fastPointer && fastPointer->next) {
+            slowPointer = slowPointer->next;          // Move slow pointer by 1 node
+            fastPointer = fastPointer->next->next;    // Move fast pointer by 2 nodes
+          
+            // If both pointers meet at the same node, there is a cycle
+            if (slowPointer == fastPointer) {
+                return true;
+            }
+        }
+      
+        // If the fast pointer reaches the end of the list, there is no cycle
+        return false;
