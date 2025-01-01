@@ -1,0 +1,56 @@
+// C++ program to delete nodes 
+// which have a greater value on
+// right side
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+    
+    Node(int x) {
+        data = x;
+        next = nullptr;
+    }
+};
+
+// This function deletes nodes on the 
+// right side of the linked list
+Node* deleteNodesOnRightSide(Node* head) {
+  
+      // If next is NULL, then there is no node 
+    // with greater value on right side.
+    if(head == nullptr || head->next == nullptr) {
+        return head;
+    }
+    
+      // find the next node using recursion
+    // It will return the node with the 
+    // greatest value on right side.
+    Node* nextNode = deleteNodesOnRightSide(head->next);
+    
+      // if right node's value is greater than
+    // current node's value, then we can simply 
+    // return the next node
+    if (nextNode->data > head->data) {
+        return nextNode;
+    }
+    
+       // if current node's value is greater, then
+    // point it to the next node, and return the
+    // the current node.
+    head->next = nextNode;
+    
+    return head;
+}
+
+void printList(Node* curr) {
+    while (curr != nullptr) {
+        cout << " " << curr->data;
+        curr = curr->next;
+    }
+}
+
+
